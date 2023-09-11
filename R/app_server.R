@@ -6,24 +6,16 @@
 #' @noRd
 app_server <- function( input, output, session ) {
   
-  # calling the translator sent as a golem option
-  i18n <- golem::get_golem_options(which = "translator")
-  i18n$set_translation_language("en")
   
-  # keep track of language object as a reactive
-  i18n_r <- reactive({
-    i18n
-  })
   
-  # change language
-  observeEvent(input[["lang"]], {
-    shiny.i18n::update_lang(session, input[["lang"]])
-    i18n_r()$set_translation_language(input[["lang"]])
-  })
+  mod_accessibility_language_server("toggle")
+  
+
   
   output[["welcome"]] <- renderUI({
-    
-    bg <- switch(input[["lang"]], 
+    lang()
+    browser()
+    bg <- switch(i18n$get_translation_language(), 
                  "en" = "white",
                  "es" = "yellow",
                  "fr" = "steelblue",

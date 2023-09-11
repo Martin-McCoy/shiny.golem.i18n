@@ -8,6 +8,8 @@ app_ui <- function(request) {
   # calling the translator sent as a golem option
   i18n <- golem::get_golem_options(which = "translator")
   i18n$set_translation_language("en")
+  assign("i18n", i18n, envir = .GlobalEnv)
+  assign("lang", reactiveVal, envir = .GlobalEnv)
   
   tagList(# Leave this function for adding external resources
     golem_add_external_resources(),
@@ -18,12 +20,8 @@ app_ui <- function(request) {
       br(),
       column(
         width = 4,
-        radioButtons(
-          inputId = "lang",
-          label = "Select language",
-          inline = TRUE,
-          choices = i18n$get_languages()
-        ),
+        mod_adjacent_ui("adjacent"),
+        mod_accessibility_language_ui("toggle"),
         uiOutput("welcome")
       )
     ))
