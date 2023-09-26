@@ -14,7 +14,6 @@ app_server <- function( input, output, session ) {
   
   output[["welcome"]] <- renderUI({
     lang()
-    browser()
     bg <- switch(i18n$get_translation_language(), 
                  "en" = "white",
                  "es" = "yellow",

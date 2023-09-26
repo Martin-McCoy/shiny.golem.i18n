@@ -43,6 +43,7 @@ golem_add_external_resources <- function(){
  
   tags$head(
     favicon(),
+    shiny.i18n::usei18n(i18n),
     bundle_resources(
       path = app_sys('app/www'),
       app_title = 'golem.i18n'

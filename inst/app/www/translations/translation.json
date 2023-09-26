@@ -1,0 +1,11 @@
+{
+  "languages": ["en", "es"],
+  "translation": [
+      {"en": "Welcome", "es": "Bienvenido"},
+      {
+        "en": "Hi \\<strong\\>visitor!\\</strong\\>",
+        "es": "Hola \\<strong\\>visitante!\\</strong\\>"
+      }
+    ],
+  "cultural_date_format": "%d-%m-%Y"
+}

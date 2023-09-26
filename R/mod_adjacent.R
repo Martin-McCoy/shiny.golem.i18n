@@ -10,7 +10,7 @@
 mod_adjacent_ui <- function(id){
   ns <- NS(id)
   tagList(
-    i18n$t('Welcome')
+    i18n$t(HTML('Hi <strong>visitor!</strong>'))
   )
 }
     
