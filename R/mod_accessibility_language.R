@@ -32,6 +32,7 @@ mod_accessibility_language_server <- function(id){
 
    observeEvent(input$lan,{
        lang<- ifelse(isTRUE(input$lan), "en", "es")
+       shinyjs::runjs(glue::glue("Transifex.live.translateTo('{lang}');"))
        shiny.i18n::update_lang(language = lang, session)
        i18n$set_translation_language(lang)
        lang(lang)

@@ -44,6 +44,9 @@ golem_add_external_resources <- function(){
   tags$head(
     favicon(),
     shiny.i18n::usei18n(i18n),
+    shinyjs::useShinyjs(),
+    tags$script(type="text/javascript", "window.liveSettings={api_key:'c98fda5ef9c74980b85bacff112b3705', picker: '#language-select', dynamic: true}"),
+    tags$script(type="text/javascript", src="//cdn.transifex.com/live.js"),
     bundle_resources(
       path = app_sys('app/www'),
       app_title = 'golem.i18n'

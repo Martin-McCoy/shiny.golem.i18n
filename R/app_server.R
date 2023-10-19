@@ -11,6 +11,7 @@ app_server <- function( input, output, session ) {
   mod_accessibility_language_server("toggle")
   
 
+  mod_adjacent_server("adjacent")
   
   output[["welcome"]] <- renderUI({
     lang()

@@ -3,8 +3,8 @@
   "translation": [
       {"en": "Welcome", "es": "Bienvenido"},
       {
-        "en": "Hi \\<strong\\>visitor!\\</strong\\>",
-        "es": "Hola \\<strong\\>visitante!\\</strong\\>"
+        "en": "Hi visitor!",
+        "es": "Hola visitante!"
       }
     ],
   "cultural_date_format": "%d-%m-%Y"
