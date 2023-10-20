@@ -15,8 +15,8 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
-      h3("{golem} app and {shiny.i18n} internationalization"),
-      h5("(With server-side translation)"),
+      h3("{golem} app internationalization"),
+      h5("(With server-side translation using {shiny.i18n} and client-side transifex translation proof of concept)"),
       br(),
       column(
         width = 4,

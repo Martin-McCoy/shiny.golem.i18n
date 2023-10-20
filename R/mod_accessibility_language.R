@@ -11,15 +11,21 @@ mod_accessibility_language_ui <- function(id){
   ns <- NS(id)
 
   tagList(
-    p(i18n$t("Welcome")),
-    #p("TEST"),
+    p(i18n$t("Welcome-using i18n")),
     shinyWidgets::switchInput(
       inputId = ns("lan"),
       label = "<i class=\"fa-solid fa-globe\"></i>",
       value = TRUE,
       onLabel = "EN",
       offLabel = "ES"
-    )
+    ),
+    h4("This is static test with some hydrologic domain jargon used in the Colorado River Basin Post-2026 Operations Exploration Tool"),
+    h4("Acronyms:"),
+    p("MOG: Minute Oversight Group"),
+    h5("DCP: Lower Basin Drought Contingency Plan (U.S.)"),
+    h4("Terms:"),
+    h5("equalization"),
+    p("storage equalization")
   )
 }
 
