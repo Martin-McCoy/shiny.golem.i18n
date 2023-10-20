@@ -12,6 +12,54 @@ mod_accessibility_language_ui <- function(id){
 
   tagList(
     p(i18n$t("Welcome-using i18n")),
+    shiny::selectInput(ns("language_select"),
+                       label = "Select Language",
+                       choices = c("en", "es"),
+                       selected = "en"
+    ),
+    tags$script(
+      UU::glue_js(
+        "
+         //This is called each time the languages list is retrieved
+    //from Transifex Live. This may happen more than once, so we should
+    //be able to handle this case.
+    Transifex.live.onFetchLanguages(function(languages) {
+      var id = '#' + '*{ns('language_select')}*'
+      //empty our language <select> list 
+      $(id).empty();
+      
+      //add translation languages to the list
+      for (var i = 0; i < languages.length; ++i) {
+        $(id).append(
+          '<option value=\"' + languages[i].code +
+            '\">' + languages[i].name + '</option>'
+        );
+      }
+      
+      //set the language selector to the source language (default)
+      $(id).val(
+        Transifex.live.getSourceLanguage().code
+      );
+      
+      //handle user selecting a language
+      $(id).change(function() {
+        //tell transifex live to translate the page
+        //based on user selection
+        Transifex.live.translateTo($(this).val());
+      });
+      
+      //called when Transifex Live successfully translates the
+      //page to a language. In that case let's update the
+    //selected language of the widget
+    Transifex.live.onTranslatePage(function(language_code) {
+        $('#' + '*{ns('language_select')}*').val(language_code);
+    });
+    });
+      "
+      )
+    ),
+      
+     
     shinyWidgets::switchInput(
       inputId = ns("lan"),
       label = "<i class=\"fa-solid fa-globe\"></i>",
